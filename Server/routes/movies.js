@@ -23,8 +23,6 @@ router.post("/", verify, async (req, res) => {
 
 router.put("/:id", verify, async (req, res) => {
   if (req.user.isAdmin) {
-    const newMovie = new Movie(req.body);
-
     try {
       const updatedMovies = await Movie.findByIdAndUpdate(
         req.params.id,
@@ -46,8 +44,6 @@ router.put("/:id", verify, async (req, res) => {
 
 router.delete("/:id", verify, async (req, res) => {
   if (req.user.isAdmin) {
-    const newMovie = new Movie(req.body);
-
     try {
       await Movie.findByIdAndDelete(req.params.id);
       res.status(201).json("the movie has been delete");

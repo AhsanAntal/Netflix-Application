@@ -3,7 +3,7 @@ const List = require("../Models/list");
 
 const verify = require("../VerifyToken");
 
-// Create movie
+// Create list
 router.post("/", verify, async (req, res) => {
   if (req.user.isAdmin) {
     const newList = new List(req.body);
@@ -59,6 +59,7 @@ router.get("/", verify, async (req, res) => {
     res.status(200).json(list);
   } catch (error) {
     res.status(400).json(error);
+    console.log(error);
   }
 });
 
